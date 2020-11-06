@@ -1,6 +1,7 @@
 //import express
 const express = require('express');
 const projectsRouter = require('./projects/projectsRouter');
+const resourcesRouter = require('./resources/resourcesRouter');
 
 
 //new server
@@ -21,7 +22,9 @@ const logger = (req,res,next) => {
 //use middleware
 server.use(express.json());
 server.use(logger);
+//and routers
 server.use('/api/projects',projectsRouter);
+server.use('/api/resources', resourcesRouter);
 
 //default GET
 server.get('/', (req,res)=>{

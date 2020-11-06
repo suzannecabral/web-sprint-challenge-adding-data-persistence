@@ -70,7 +70,7 @@ router.post('/:id/tasks', (req,res)=>{
     })
     .catch(err=>{
       console.log(err);
-      res.status(500).json({ message: 'Failed to add project'});
+      res.status(500).json({ message: 'Failed to add task'});
     });
 });
 
