@@ -18,7 +18,7 @@ const router = express.Router();
 router.get('/', (req,res)=>{
   Projects.getAll()
     .then(data => {
-      res.json(data);
+      res.status(200).json(data);
     })
     .catch(err=>{
       console.log(err);
@@ -30,14 +30,37 @@ router.get('/', (req,res)=>{
 // Projects.addNew(project)
 // POST /
 //-------------------
-
+router.post('/', (req,res)=>{
+  const newProject = req.body;
+  
+  Projects.addNew(newProject)
+    .then(data =>{ 
+      res.status(201).json(data);
+    })
+    .catch(err=>{
+      console.log(err);
+      res.status(500).json({ message: 'Failed to add project'});
+    });
+});
 
 
 // add new task to project:
 // Projects.addTask(task, project_id)
 // POST /:id/tasks
 //-------------------
+router.post('/:id/tasks', (req,res)=>{
+  const { id } = req.params;
+  const newTask = req.body;
 
+  Projects.addTask(newTask, id)
+    .then(data =>{ 
+      res.status(201).json(data);
+    })
+    .catch(err=>{
+      console.log(err);
+      res.status(500).json({ message: 'Failed to add project'});
+    });
+});
 
 //export
 module.exports = router;

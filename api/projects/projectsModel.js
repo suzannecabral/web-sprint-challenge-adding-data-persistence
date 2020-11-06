@@ -12,14 +12,30 @@ module.exports = {
 
   // add new project
   // POST  /
-  addNew(project){
-    return 'new project goes here'
+  async addNew(project){
+
+    //insert new project
+    await 'insert project here'
+
+    //take returned id, look up newly added proj
+
+    //return newly added proj data
+    return 'new project'
+
   },
 
   // add new task to project:
   // POST /:id/tasks
-  addTask(task, project_id){
-    return 'new task goes here'
+  async addTask(task, project_id){
+
+    //insert new project
+    await 'insert task here'
+
+    //take returned id, look up newly added proj
+
+    //return newly added proj data
+    return 'new task'
+    
   }
 
 };
