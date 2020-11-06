@@ -4,7 +4,7 @@ module.exports = {
   
   // url: /api/projects/
   //--------------------
-  
+
   // get all projects
   // GET /
   getAll(){
@@ -16,13 +16,11 @@ module.exports = {
   async addNew(project){
 
     //insert new project
-    await 'insert project here'
+    const [id] = await db('projects').insert(project);
 
     //take returned id, look up newly added proj
-
     //return newly added proj data
-    return 'new project'
-
+    return db('projects').where('projects.id', id).first();
   },
 
   // add new task to project:
