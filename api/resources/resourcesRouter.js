@@ -26,6 +26,22 @@ router.get('/', (req,res)=>{
 });
 
 
+// post new resource
+// Resources.addNew()
+// POST / 
+//--------------------
+
+router.post('/', (req,res)=>{
+  Resources.addNew(req.body)
+  .then(data => {
+    res.status(201).json(data);
+  })
+  .catch(err=>{
+    console.log(err);
+    res.status(500).json({ message: 'Failed to post resource'});
+  });
+})
+
 
 //export
 module.exports = router;

@@ -11,17 +11,17 @@ module.exports = {
     return db('resources');
   },
 
-  // // add new resource
-  // // POST  /
-  // async addNew(resource){
+  // add new resource
+  // POST  /
+  async addNew(resource){
 
-  //   //insert new resource
-  //   await 'insert resource here'
+    //insert new resource
+    const [id] = await db('resources').insert(resource);
 
-  //   //take returned id, look up newly added proj
-
-  //   //return newly added proj data
-  //   return 'new resource'
-
-  // },
+    //take returned id, look up newly added proj
+    //return newly added proj data
+    return db('resources')
+      .where('resources.id', id)
+      .first();
+  },
 };
