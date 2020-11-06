@@ -2,7 +2,7 @@
 const express = require('express');
 const projectsRouter = require('./projects/projectsRouter');
 const resourcesRouter = require('./resources/resourcesRouter');
-
+const tasksRouter = require('./tasks/tasksRouter');
 
 //new server
 const server = express();
@@ -25,6 +25,7 @@ server.use(logger);
 //and routers
 server.use('/api/projects',projectsRouter);
 server.use('/api/resources', resourcesRouter);
+server.use('/api/all_tasks', tasksRouter);
 
 //default GET
 server.get('/', (req,res)=>{
