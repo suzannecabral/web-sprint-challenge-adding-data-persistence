@@ -3,7 +3,8 @@ const db = require('../../data/dbConfig');
 module.exports = {
   
   // url: /api/projects/
-
+  //--------------------
+  
   // get all projects
   // GET /
   getAll(){
@@ -37,5 +38,4 @@ module.exports = {
     return 'new task'
     
   }
-
 };
