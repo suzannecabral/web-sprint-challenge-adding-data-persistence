@@ -32,7 +32,12 @@ router.get('/', (req,res)=>{
 //-------------------
 router.post('/', (req,res)=>{
   const newProject = req.body;
-  
+
+  //required input:
+  //    name: (text)
+  //optional:
+  //    description: (text)
+
   Projects.addNew(newProject)
     .then(data =>{ 
       res.status(201).json(data);
@@ -50,7 +55,14 @@ router.post('/', (req,res)=>{
 //-------------------
 router.post('/:id/tasks', (req,res)=>{
   const { id } = req.params;
-  const newTask = req.body;
+  const newTask = {...req.body, project_id:id}
+
+  //required input:
+  //    description (text)
+  //    order: (number)
+  //optional:
+  //    notes: (text)
+  //    completed: (boolean)
 
   Projects.addTask(newTask, id)
     .then(data =>{ 

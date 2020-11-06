@@ -24,16 +24,15 @@ module.exports = {
   },
 
   // add new task to project:
+  // project_id comes in on the req
   // POST /:id/tasks
-  async addTask(task, project_id){
+  async addTask(task){
 
-    //insert new project
-    await 'insert task here'
+    //insert new task
+    const [id] = await db('tasks').insert(task);
 
-    //take returned id, look up newly added proj
-
-    //return newly added proj data
-    return 'new task'
+    //return newly added task data
+    return db('tasks').where('tasks.id',id).first();
     
   }
 };
