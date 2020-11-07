@@ -49,6 +49,27 @@ router.post('/', (req,res)=>{
 });
 
 
+// get tasks by project
+// Projects.getTasks(project_id)
+// GET /:id/tasks
+//-------------------
+
+router.get('/:id/tasks', (req,res)=>{
+  const { id } = req.params;
+  
+  Projects.getTasks(id)
+    .then(data => {
+      res.status(200).json(data);
+    })
+    .catch(err=>{
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get tasks'});
+    });
+
+});
+
+
+
 // add new task to project:
 // Projects.addTask(task, project_id)
 // POST /:id/tasks
@@ -73,6 +94,8 @@ router.post('/:id/tasks', (req,res)=>{
       res.status(500).json({ message: 'Failed to add task'});
     });
 });
+
+
 
 //export
 module.exports = router;
