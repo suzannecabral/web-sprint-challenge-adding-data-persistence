@@ -65,6 +65,13 @@ exports.up = function(knex) {
       .inTable('resources')
       .onUpdate('CASCADE')
       .onDelete('CASCADE');
+
+    tbl.integer('task_id')
+      .unsigned()
+      .references('id')
+      .inTable('tasks')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE');
   });
 };
 

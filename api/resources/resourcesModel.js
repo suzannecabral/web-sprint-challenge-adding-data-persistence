@@ -24,4 +24,5 @@ module.exports = {
       .where('resources.id', id)
       .first();
   },
+
 };
