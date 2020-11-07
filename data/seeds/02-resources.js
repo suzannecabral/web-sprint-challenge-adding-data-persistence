@@ -47,7 +47,7 @@ exports.seed = function(knex) {
         },
         {
           name: 'Drying Rack',
-          description:'Table Saw'
+          description:''
         },
         {
           name: 'Table Saw',
