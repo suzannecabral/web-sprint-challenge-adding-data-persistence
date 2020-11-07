@@ -96,6 +96,27 @@ router.post('/:id/tasks', (req,res)=>{
 });
 
 
+// get resources by project
+// Projects.getResources(project_id)
+// GET /:id/resources
+//-------------------
+
+router.get('/:id/resources', (req,res)=>{
+  const { id } = req.params;
+  
+  Projects.getResources(id)
+    .then(data =>{ 
+      res.status(200).json(data);
+    })
+    .catch(err=>{
+      console.log(err);
+      res.status(500).json({ message: 'Failed to get resources'});
+    });
+
+});
+
+
+
 
 //export
 module.exports = router;

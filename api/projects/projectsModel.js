@@ -66,5 +66,24 @@ module.exports = {
       //no proj, return null
       return Promise.resolve(null);
     }
+  },
+  
+  async getResources(project_id){
+    //check proj exists
+    const foundProject = await db('projects')
+      .where('projects.id',project_id)
+      .first();
+
+    if(foundProject){
+      return db('project_resources as pr')
+        .join('resources as r', 'pr.resource_id', 'r.id')
+        .select('r.name', 'r.description')
+        .where('pr.project_id', project_id);
+    }else{
+      //no proj, return null
+      return Promise.resolve(null);
+    }
+
   }
+
 };
